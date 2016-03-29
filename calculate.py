@@ -59,6 +59,7 @@ class Calculator(Frame):
     def final(self):
         if self.op:
             self.execute()
+            self.new_num = True
         else:
             return
 
