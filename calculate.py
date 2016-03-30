@@ -1,7 +1,6 @@
  # calc.py - a Python calculator
 from tkinter import *
 
-
 class Calculator(Frame):
     def __init__(self):
         self.total = 0
