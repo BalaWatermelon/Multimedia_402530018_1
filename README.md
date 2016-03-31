@@ -12,7 +12,7 @@ Have fun with it~
 - Button clicked event
 - Store number for Calculation
 
-###Param:
+###Variables:
 - current:
   - current number use to calculate.
 - store:
@@ -45,7 +45,7 @@ Have fun with it~
 ###Quick view:
 - Result box logic
 
-###Param:
+###Variables:
 - none
 
 ###Method:
