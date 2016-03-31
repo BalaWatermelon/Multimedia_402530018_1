@@ -1,19 +1,22 @@
-# pyCalculater
-Calculater in python
+pyCalculater
+=============
+
+This is a calculator in Python
+
 Have fun with it~
 
-[Class] Calculator:
-  Quick view:
-    -Calculation logic
-    -Button clicked event
-    -Store number for Calculation
-  Param:
-    -current : current number use to calculate.
-    -store   : store number to be op with the next current.
-    -new_num : if the number is new, put the current into store.
-    -combo   : execute using two ops. ex: 2+2 '+'
-    -op      : store operation
-  Method:
+###[Class] Calculator:
+  >Quick view:
+  >>-Calculation logic
+  >>-Button clicked event
+  >>-Store number for Calculation
+  >Param:
+  >>-current : current number use to calculate.
+  >>-store   : store number to be op with the next current.
+  >>-new_num : if the number is new, put the current into store.
+  >>-combo   : execute using two ops. ex: 2+2 '+'
+  >>-op      : store operation
+  >Method:
     -num_press(num)
       accept parameters : numbers
     -oper(op)
