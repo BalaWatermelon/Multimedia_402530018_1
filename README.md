@@ -9,59 +9,55 @@ Have fun with it~
 
 ####Quick view:
 
--Calculation logic
--Button clicked event
--Store number for Calculation
+- Calculation logic
+- Button clicked event
+- Store number for Calculation
 
 ####Param:
 
--current :
+- current :
 
 current number use to calculate.
 
--store   :
+- store   :
 
 store number to be op with the next current.
 
--new_num :
+- new_num :
 
 if the number is new, put the current into store.
 
--combo   :
+- combo   :
 
 execute using two ops. ex: 2+2 '+'
 
--op      :
+- op      :
 
 store operation
 
 ####Method:
--num_press(num)
+- num_press(num)
 
 accept parameters : numbers
 
--oper(op)
+- oper(op)
 
 accept parameters : '+', '-', '\*', '/'
 
--execute()
+- execute()
 
 execute with 'store' 'op' 'current' pattern, and save the result to [ResultBox].
 
--final()
-
+- final()
 trigger while '=' is clicked.
 
--display(number)
-
+- display(number)
 display number to [text_box].
 
--clear()
-
+- clear()
 C button,clear current
 
--all_clear()
-
+- all_clear()
 AC button
 
 ###[Class] ResultBox:
