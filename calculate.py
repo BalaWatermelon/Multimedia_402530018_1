@@ -9,6 +9,7 @@ class Calculator(Frame):
         self.new_num = True
         self.combo = False
         self.op = ''
+        self.history = []
 
     def num_press(self, num):
 
@@ -43,6 +44,7 @@ class Calculator(Frame):
         self.new_num = True
 
     def execute(self):
+        answer = self.store + self.op + str(self.current)
         if self.op == '+':
             self.current = float(self.store) + float(self.current)
         elif self.op == '-':
@@ -51,7 +53,7 @@ class Calculator(Frame):
             self.current = float(self.store) * float(self.current)
         elif self.op == '/':
             self.current = float(self.store) / float(self.current)
-
+        listbox.insert(END,answer + '=' + str(self.current))
         self.op = ''
         self.display(self.current)
 
@@ -59,6 +61,7 @@ class Calculator(Frame):
         if self.op:
             self.execute()
             self.new_num = True
+            self.combo = ''
         else:
             return
 
@@ -79,15 +82,36 @@ class Calculator(Frame):
         self.new_num = True
         self.combo = False
 
+class ResultBox():
+    def clicked(self,event):
+        for selection in listbox.curselection():
+            print(selection)
+            sum1.all_clear()
+            bla, sum1.current = listbox.get(selection).split('=')
+            sum1.display(sum1.current)
+    def clear(self):
+        listbox.delete(0, END)
+
 sum1 = Calculator()
+rb = ResultBox()
 root = Tk()
 calc = Frame(root)
 calc.grid()
+lb = Frame(root)
+lb.grid()
+
 
 root.title("Calculator")
 text_box = Entry(calc, justify=RIGHT)
 text_box.grid(row = 0, column = 0, columnspan = 3, pady = 5)
 text_box.insert(0, "0")
+
+listbox = Listbox(lb)
+listbox.bind('<ButtonRelease-1>', rb.clicked)
+b = Button(calc , text='RBC')
+b['command'] = rb.clear
+b.grid(row = 5, column = 0, pady = 5)
+listbox.pack()
 
 numbers = "789456123"
 i = 0
