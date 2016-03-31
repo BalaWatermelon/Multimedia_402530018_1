@@ -84,7 +84,6 @@ class Calculator(Frame):
 class ResultBox():
     def clicked(self,event):
         for selection in listbox.curselection():
-            print(selection)
             sum1.all_clear()
             bla, sum1.current = listbox.get(selection).split('=')
             sum1.display(sum1.current)
