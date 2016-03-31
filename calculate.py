@@ -1,6 +1,7 @@
  # calc.py - a Python calculator
 from tkinter import *
 
+
 class Calculator(Frame):
     def __init__(self):
         self.current = '0'
@@ -89,7 +90,9 @@ class ResultBox():
             sum1.display(sum1.current)
     def clear(self):
         listbox.delete(0, END)
+        sum1.all_clear()
 
+#components
 sum1 = Calculator()
 rb = ResultBox()
 root = Tk()
@@ -98,12 +101,13 @@ calc.grid()
 lb = Frame(root)
 lb.grid()
 
-
+#Frame setting
 root.title("Calculator")
 text_box = Entry(calc, justify=RIGHT)
 text_box.grid(row = 0, column = 0, columnspan = 3, pady = 5)
 text_box.insert(0, "0")
 
+#listbox
 listbox = Listbox(lb)
 listbox.bind('<ButtonRelease-1>', rb.clicked)
 b = Button(calc , text='RBC')
@@ -111,6 +115,7 @@ b['command'] = rb.clear
 b.grid(row = 5, column = 0, pady = 5)
 listbox.pack()
 
+#GUI numbers
 numbers = "789456123"
 i = 0
 bttn = []
@@ -121,6 +126,7 @@ for j in range(1,4):
         bttn[i]["command"] = lambda x = numbers[i]: sum1.num_press(x)
         i += 1
 
+#GUI others
 bttn_0 = Button(calc, text = "0")
 bttn_0["command"] = lambda: sum1.num_press(0)
 bttn_0.grid(row = 4, column = 1, pady = 5)
@@ -157,4 +163,5 @@ equals = Button(calc, text = "=")
 equals["command"] = sum1.final
 equals.grid(row = 5, column = 3, pady = 5)
 
+#run
 root.mainloop()
