@@ -4,6 +4,8 @@ This is a calculator in Python
 
 Have fun with it~
 
+**Important!! Run in python3X or later**
+
 ##[Class] Calculator:
 ###Quick view:
 - Calculation logic
