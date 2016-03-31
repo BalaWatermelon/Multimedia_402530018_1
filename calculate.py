@@ -3,13 +3,11 @@ from tkinter import *
 
 class Calculator(Frame):
     def __init__(self):
-        self.total = 0
         self.current = '0'
         self.store = ''
         self.new_num = True
         self.combo = False
         self.op = ''
-        self.history = []
 
     def num_press(self, num):
 
