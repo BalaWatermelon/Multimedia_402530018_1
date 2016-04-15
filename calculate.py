@@ -37,24 +37,45 @@ class Calculator(Frame):
         if self.combo:
             self.execute()
             self.op = op
+            op_box.delete(0,END)
+            op_box.insert(0,op)
             self.combo = False
         self.store = text_box.get()
         self.op = op
+        op_box.delete(0,END)
+        op_box.insert(0,op)
         self.new_num = True
 
     def execute(self):
         answer = self.store + self.op + str(self.current)
-        if self.op == '+':
-            self.current = float(self.store) + float(self.current)
-        elif self.op == '-':
-            self.current = float(self.store) - float(self.current)
-        elif self.op == '*':
-            self.current = float(self.store) * float(self.current)
-        elif self.op == '/':
-            self.current = float(self.store) / float(self.current)
-        listbox.insert(END,answer + '=' + str(self.current))
-        self.op = ''
-        self.display(self.current)
+        try:
+            if self.op == '+':
+                self.current = float(self.store) + float(self.current)
+            elif self.op == '-':
+                self.current = float(self.store) - float(self.current)
+            elif self.op == '*':
+                self.current = float(self.store) * float(self.current)
+            elif self.op == '/':
+                if float(self.current)==0:
+                    if float(self.store)==0:
+                        self.current = 'Infinity'
+                        self.op = ''
+                        self.display(self.current)
+                    else:
+                        self.current = 'NaN'
+                        self.op = ''
+                        self.display(self.current)
+                else:
+                    self.current = float(self.store) / float(self.current)
+            listbox.insert(END,answer + '=' + str(self.current))
+            self.op = ''
+            self.display(self.current)
+        except:
+            self.current == 'NaN'
+            self.op = ''
+            self.display(self.current)
+        op_box.delete(0,END)
+
 
     def final(self):
         if self.op:
@@ -85,8 +106,14 @@ class ResultBox():
     def clicked(self,event):
         for selection in listbox.curselection():
             sum1.all_clear()
-            bla, sum1.current = listbox.get(selection).split('=')
-            sum1.display(sum1.current)
+            bla, current = listbox.get(selection).split('=')
+            if current == 'NaN':
+                return
+            elif current == 'Infinity':
+                return
+            else:
+                sum1.current=current
+                sum1.display(current)
     def clear(self):
         listbox.delete(0, END)
         sum1.all_clear()
@@ -105,6 +132,9 @@ root.title("Calculator")
 text_box = Entry(calc, justify=RIGHT)
 text_box.grid(row = 0, column = 0, columnspan = 3, pady = 5)
 text_box.insert(0, "0")
+
+op_box = Entry(calc,width=5)
+op_box.grid(row = 0, column = 3)
 
 #listbox
 listbox = Listbox(lb)
