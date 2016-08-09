@@ -1,7 +1,6 @@
  # calc.py - a Python calculator
 from tkinter import *
 
-
 class Calculator(Frame):
     def __init__(self):
         self.current = '0'
@@ -31,7 +30,7 @@ class Calculator(Frame):
                 if temp2 in origin:
                     return
             self.current = origin + temp2
-        self.display(self.current)
+            self.display(self.current)
 
     def oper(self,op):
         if self.combo:
